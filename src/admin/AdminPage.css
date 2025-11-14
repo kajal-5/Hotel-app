@@ -1,0 +1,15 @@
+/* src/admin/AdminPage.css */
+
+.request-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  background: #f7f9fb;
+}
+
+.request-actions button {
+  margin-left: 6px;
+}
