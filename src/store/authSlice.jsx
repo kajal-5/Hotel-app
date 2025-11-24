@@ -32,61 +32,6 @@ export const signupUser = createAsyncThunk(
 );
 
 
-
-
-
-
-// 🔹 Create user (Firebase Auth Signup)
-// export async function signupUser(email, password) {
-//   try {
-//     const res = await axios.post(
-//       `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
-//       {
-//         email,
-//         password,
-//         returnSecureToken: true,
-//       }
-//     );
-
-//     return res.data; // contains idToken, email, refreshToken, localId (UID)
-//   } catch (error) {
-//     console.error("Signup Error:", error.response.data.error.message);
-//     throw error;
-//   }
-// }
-
-// // 🔹 Save user profile in RTDB (NEW STRUCTURE)
-// export async function saveUserProfile(email, role) {
-//   try {
-//     const emailKey = email.replace(/\./g, ""); // for folder name
-
-//     await axios.put(
-//       `https://<your-database>.firebaseio.com/users/${emailKey}/profile.json`,
-//       {
-//         email,
-//         role,
-//       }
-//     );
-
-//     return true;
-//   } catch (error) {
-//     console.error("Saving Profile Error:", error);
-//     throw error;
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
 // === LOGIN ===
 export const loginUser = createAsyncThunk(
   "auth/loginUser",

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signupUser } from "../store/authSlice";
-import "./Login.css"; // reuse same styles
+import "./Login.css";
 
 const Signup = ({ onClose }) => {
   const [email, setEmail] = useState("");
@@ -88,14 +88,7 @@ const Signup = ({ onClose }) => {
           {loading ? "Creating..." : "Create Account"}
         </button>
 
-        <button
-          type="button"
-          className="secondary-btn"
-          onClick={onClose}
-          disabled={loading}
-        >
-          Back to Login
-        </button>
+
       </form>
     </div>
   );

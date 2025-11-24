@@ -95,6 +95,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "+ Add Hotel" }) => 
               />
             </Form.Group>
 
+
             <div className="text-end">
               <Button
                 variant="secondary"

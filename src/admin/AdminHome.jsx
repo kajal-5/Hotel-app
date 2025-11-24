@@ -6,7 +6,7 @@ import { updateRequestStatus } from "../store/requestSlice";
 import EditHotel from "./EditHotelButton";
 import "./style/HotelCard.css";
 
-const HotelCard = ({ hotel, requests = [] }) => {
+const AdminHome = ({ hotel, requests = [] }) => {
   const dispatch = useDispatch();
 
   if (!hotel) {
@@ -149,4 +149,4 @@ const HotelCard = ({ hotel, requests = [] }) => {
   );
 };
 
-export default HotelCard;
+export default AdminHome;
