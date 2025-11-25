@@ -24,12 +24,12 @@ const AdminPage = () => {
     const interval = setInterval(() => {
       dispatch(fetchHotels());
       dispatch(fetchRequests());
-    }, 100);
+    }, 3000);
     return () => clearInterval(interval);
   }, [dispatch]);
 
-  const getRequestsForHotel = (hotelId) =>
-    requests.filter((r) => r.hotelId === hotelId && r.status === "pending");
+  const getRequestsForHotel = (hotelName) =>
+    requests.filter((r) => r.hotelName === hotelName && r.status === "pending");
 
   if (!initialLoaded.current && (hotelsLoading || reqLoading)) {
     return (
@@ -55,7 +55,7 @@ const AdminPage = () => {
       <Row xs={1} md={2} lg={3} className="g-4">
         {hotels.map((hotel) => (
           <Col key={hotel.id}>
-            <HotelCard hotel={hotel} requests={getRequestsForHotel(hotel.id)} />
+            <HotelCard hotel={hotel} requests={getRequestsForHotel(hotel.name)} />
           </Col>
         ))}
       </Row>

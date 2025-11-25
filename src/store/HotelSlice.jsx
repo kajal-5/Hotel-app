@@ -2,8 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { DB_URL } from "../firebase";
 
-
-
 export const addHotel = createAsyncThunk(
   "hotel/addHotel",
   async (hotelData, { rejectWithValue }) => {
@@ -12,7 +10,10 @@ export const addHotel = createAsyncThunk(
       const payload = {
         name: hotelData.name,
         img: hotelData.img,
-        description: hotelData.description,
+        pincode: hotelData.pincode,
+        city: hotelData.city,
+        startDate: hotelData.startDate,
+        endDate: hotelData.endDate,
         totalPeople: Number(hotelData.totalPeople || 0),
         availablePeople: Number(hotelData.totalPeople || 0),
         price: Number(hotelData.price || 0),
@@ -50,7 +51,6 @@ export const startHotelsListener = (dispatch) => {
   }, 3000);
   return () => clearInterval(interval);
 };
-
 
 // update hotel (admin edit)
 export const updateHotel = createAsyncThunk(

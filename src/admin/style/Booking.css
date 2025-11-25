@@ -1,0 +1,66 @@
+/* Prevent content hiding behind navbar */
+.user-page {
+  padding-top: 30px!important;
+}
+
+/* Row layout */
+.user-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;        /* spacing between cards */
+}
+
+/* 3 cards per row on large */
+@media (min-width: 992px) {
+  .user-col {
+    flex: 0 0 calc(33.33% - 25px);
+  }
+}
+
+/* 2 per row on tablet */
+@media (max-width: 991px) and (min-width: 768px) {
+  .user-col {
+    flex: 0 0 calc(50% - 25px);
+  }
+}
+
+/* 1 per row on mobile */
+@media (max-width: 767px) {
+  .user-col {
+    flex: 0 0 100%;
+  }
+}
+
+
+
+.user-page.container {
+  padding-left: 10px !important;
+  padding-right: 0 !important;
+  max-width: 100% !important;
+}
+
+/* Remove row padding that causes right-side gap */
+.user-row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+}
+
+
+.notification-bell {
+  position: relative;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+}

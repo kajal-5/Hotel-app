@@ -1,0 +1,41 @@
+.user-page {
+  padding-top: 10px !important;
+}
+
+
+/* ROW GAP CONTROL */
+.user-row {
+  gap: 15px !important;   
+}
+
+
+.user-card {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  height: 480px !important;
+
+}
+
+
+.user-card-img {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  background: #eaeaea;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+
+.user-card .card-body {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addHotel } from "../store/HotelSlice";
+import { addHotel } from "../../store/HotelSlice";
 
 const AddHotel = ({ buttonVariant = "primary", buttonText = "+ Add Hotel" }) => {
   const dispatch = useDispatch();
@@ -9,9 +9,11 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "+ Add Hotel" }) => 
   const [form, setForm] = useState({
     name: "",
     img: "",
-    description: "",
+    pincode: "",
+    city:"",
     people: 1,
     price: 500,
+
   });
 
   const handleSubmit = async (e) => {
@@ -20,13 +22,14 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "+ Add Hotel" }) => 
       addHotel({
         name: form.name,
         img: form.img,
-        description: form.description,
+        pincode: form.pincode,
+        city: form.city,
         totalPeople: form.people,
         price: form.price,
       })
     );
     setShow(false);
-    setForm({ name: "", img: "", description: "", people: 1, price: 500 });
+    setForm({ name: "", img: "", pincode: "",city:"", people: 1, price: 500 });
   };
 
   return (
@@ -58,17 +61,24 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "+ Add Hotel" }) => 
               />
             </Form.Group>
 
+
             <Form.Group className="mb-2">
-              <Form.Label>Description</Form.Label>
+              <Form.Label>Pincode</Form.Label>
               <Form.Control
-                as="textarea"
-                rows={3}
-                value={form.description}
-                onChange={(e) =>
-                  setForm({ ...form, description: e.target.value })
-                }
+                type="number"
+                value={form.pincode}
+                onChange={(e) => setForm({ ...form, pincode: e.target.value })}
+                required
               />
             </Form.Group>
+            <Form.Group className="mb-2">
+              <Form.Label>City</Form.Label>
+              <Form.Control
+                value={form.city}
+                onChange={(e) => setForm({ ...form, city: e.target.value })}
+                required
+              />
+            </Form.Group>            
 
             <Form.Group className="mb-2">
               <Form.Label>Total People</Form.Label>

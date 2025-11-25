@@ -1,37 +1,59 @@
 import React from "react";
-import { Card, Badge } from "react-bootstrap";
-import "../style/HotelCard.css";
+import { Card } from "react-bootstrap";
+import "../style/BookingCard.css";
 
-const BookingCard = (request, hotel ) => {
-  if (!request) {
-    return <div className="text-muted text-center py-3">Loading...</div>;
-  }
-
+const BookingCard = ({ request }) => {
   return (
-    <Card className="h-100 shadow-sm hotel-card">
-
-      {/* Hotel Image (Static if you have no image in request) */}
+    <Card className="user-card h-100">
+      {/* Hotel Image */}
       <Card.Img
         variant="top"
-        src={hotel?.img || "https://via.placeholder.com/400x200"||"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTetbGmKHx_ucTyRA8NCArMo8VBscBvj3QDBw&s/400*200"}
+        src={request.img || "https://via.placeholder.com/400x250"}
+        className="user-card-img"
       />
 
       <Card.Body>
-        {/* Hotel Name + Status */}
-        <Card.Title>
-          {request.hotelName || "Hotel"}
-          <Badge bg="info" className="ms-2">
-            {request.status}
-          </Badge>
-        </Card.Title>
+        <Card.Title className="mb-2">{request.hotelName}</Card.Title>
 
-        {/* Description Section */}
-        <Card.Text>
-          <strong>User:</strong> {request.userEmail} <br />
-          <strong>People:</strong> {request.peopleBooked} <br />
-          <strong>Date:</strong> {request.date} <br />
+        {/* People Booked */}
+        <pre className="user-card-desc">
+          <strong>People Booked:</strong> {request.peopleBooked}                    <strong>email:</strong> {request.userEmail}
+        </pre>
+
+        {/* City + Pincode */}
+        <p className="user-card-desc">
+          <strong>City:</strong> {request.city || "—"}, 
+          <strong> Pincode:</strong> {request.pincode || "—"}
+        </p>
+
+        {/* Dates */}
+        <p className="user-card-desc">
+          <strong>Date:</strong> {request.date}
+        </p>
+
+        {/* Price */}
+        <p className="user-card-desc">
           <strong>Price:</strong> ₹{request.price}
-        </Card.Text>
+        </p>
+
+        {/* Status */}
+        <p className="user-card-desc">
+          <strong>Status:</strong> 
+          <span
+            style={{
+              color:
+                request.status === "approved"
+                  ? "green"
+                  : request.status === "pending"
+                  ? "orange"
+                  : "red",
+              fontWeight: "bold",
+              marginLeft: "5px",
+            }}
+          >
+            {request.status}
+          </span>
+        </p>
       </Card.Body>
     </Card>
   );

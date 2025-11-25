@@ -1,43 +1,59 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import "./style/BookingCard.css";
+import "../style/UserCard.css";
 
-const BookingCard = ({ hotel, request }) => {
+const BookingCard = ({ request }) => {
   return (
     <Card className="user-card h-100">
+      {/* Hotel Image */}
       <Card.Img
         variant="top"
-        src={hotel?.img || "https://via.placeholder.com/400x250"}
+        src={request.img || "https://via.placeholder.com/400x250"}
         className="user-card-img"
       />
 
       <Card.Body>
-        <Card.Title className="mb-2">{hotel?.name}</Card.Title>
+        <Card.Title className="mb-2">{request.hotelName}</Card.Title>
 
-        <Card.Text className="user-card-desc">
-          {hotel?.description}
-        </Card.Text>
+        {/* People Booked */}
+        <p className="user-card-desc">
+          <strong>People Booked:</strong> {request.peopleBooked}
+        </p>
 
-        <div className="mt-3">
-          <p><strong>Date:</strong> {request.date}</p>
-          <p><strong>People:</strong> {request.peopleBooked}</p>
-          <p><strong>Price:</strong> ₹{request.price}</p>
+        {/* City + Pincode */}
+        <p className="user-card-desc">
+          <strong>City:</strong> {request.city || "—"}, 
+          <strong> Pincode:</strong> {request.pincode || "—"}
+        </p>
 
-          <p>
-            <strong>Status: </strong>
-            <span
-              className={
+        {/* Dates */}
+        <p className="user-card-desc">
+          <strong>Date:</strong> {request.date}
+        </p>
+
+        {/* Price */}
+        <p className="user-card-desc">
+          <strong>Price:</strong> ₹{request.price}
+        </p>
+
+        {/* Status */}
+        <p className="user-card-desc">
+          <strong>Status:</strong> 
+          <span
+            style={{
+              color:
                 request.status === "approved"
-                  ? "text-success"
-                  : request.status === "rejected"
-                  ? "text-danger"
-                  : "text-warning"
-              }
-            >
-              {request.status}
-            </span>
-          </p>
-        </div>
+                  ? "green"
+                  : request.status === "pending"
+                  ? "orange"
+                  : "red",
+              fontWeight: "bold",
+              marginLeft: "5px",
+            }}
+          >
+            {request.status}
+          </span>
+        </p>
       </Card.Body>
     </Card>
   );

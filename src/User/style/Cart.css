@@ -1,0 +1,17 @@
+/* Full page background container */
+.page-container {
+  width: 100% !important; /* Always full screen width */
+  min-height: 100vh;
+  padding-top: 50px !important;
+  display: flex;
+  justify-content: center; /* center inner content */
+}
+
+/* Inner container takes large width but stays centered */
+.cart-container {
+  padding-top: 50px !important;
+  width: 100%;
+  max-width: 2000px !important;
+  justify-content: center !important; /* You can change: 1200 / 1400 / 1600 */
+  padding-left: 200px !important;
+}

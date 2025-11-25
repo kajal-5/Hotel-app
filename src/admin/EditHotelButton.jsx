@@ -27,14 +27,22 @@ const EditHotel = ({ show, onClose, form, setForm, onSave }) => {
           </Form.Group>
 
           <Form.Group className="mb-2">
-            <Form.Label>Description</Form.Label>
+            <Form.Label>Pincode</Form.Label>
             <Form.Control
-              as="textarea"
-              rows={3}
-              value={form.description}
-              onChange={(e) =>
-                setForm({ ...form, description: e.target.value })
-              }
+              type="number"
+              min={1}
+              value={form.pincode}
+              onChange={(e) => setForm({ ...form, pincode: e.target.value })}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-2">
+            <Form.Label>City</Form.Label>
+            <Form.Control
+              value={form.city}
+              onChange={(e) => setForm({ ...form, city: e.target.value })}
+              required
             />
           </Form.Group>
 

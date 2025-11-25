@@ -1,56 +1,80 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRequests } from "../../store/requestSlice";
 import { fetchHotels } from "../../store/HotelSlice";
-
-import { Spinner, Row, Col } from "react-bootstrap";
-import BookingCard from "./Bookingcard";
+import { bookHotel, fetchRequests } from "../../store/requestSlice";
+import BookingCard from "./BookingCard";
+import "../style/Booking.css";
 
 const Booking = () => {
   const dispatch = useDispatch();
-  const { requests, loading: reqLoading } = useSelector((s) => s.requests);
-  const { hotels, loading: hotelsLoading } = useSelector((s) => s.hotel);
-
-  const [loading, setLoading] = useState(true);
+  const { hotels } = useSelector((s) => s.hotel);
+  const { requests } = useSelector((s) => s.requests);
+  const user = useSelector((s) => s.auth.user);
+  const [selected, setSelected] = useState({});
 
   useEffect(() => {
-    const loadAll = async () => {
-      await Promise.all([dispatch(fetchRequests()), dispatch(fetchHotels())]);
-      setLoading(false);
-    };
-
-    loadAll();
+    dispatch(fetchHotels());
+    dispatch(fetchRequests());
+    const int = setInterval(() => {
+      dispatch(fetchHotels());
+      dispatch(fetchRequests());
+    }, 3000);
+    return () => clearInterval(int);
   }, [dispatch]);
 
-  if (loading) {
-    return (
-      <div className="text-center my-5">
-        <Spinner animation="border" />
-      </div>
-    );
-  }
+  // const handleBook = (hotel) => {
+  //   const qty = selected[hotel.id]?.qty || 1;
+  //   const date = selected[hotel.id]?.date;
 
-  // Create map: hotelId → hotel data
-  const hotelMap = {};
-  hotels.forEach((h) => {
-    hotelMap[h.id] = h;
-  });
+  //   if (!user) return alert("Please login to book");
+  //   if (!date && hotel.availablePeople !== null && qty < hotel.availablePeople)
+  //     return alert("Please select a booking date");
+  //   if (hotel.availablePeople != null && qty > hotel.availablePeople)
+  //     return alert("Not enough availability");
+
+  //   dispatch(
+  //     bookHotel({
+  //       hotelName: hotel.name,
+  //       userEmail: user.email,
+  //       people: qty,
+  //       date,
+  //       price: hotel.price, // ← save hotel price
+  //     })
+  //   )
+  //     .unwrap()
+  //     .then(() => alert("Booking request sent"))
+  //     .catch((err) => alert("Error: " + (err || "Failed")));
+  // };
+
+  // const myRequests = requests.filter((r) => r.userEmail === user?.email);
 
   return (
-    <div className="container mt-4">
-      <h2>All Booking Requests</h2>
+    <>
+      <div className="user-page container mt-5 pt-3">
+        <div className="row  g-3 user-row">
+          {/* {hotels.map((h) => (
+            <div className="col-lg-4 col-md-6 col-sm-12 user-col" key={h.id}>
+              <UserCard
+                hotel={h}
+                selected={selected}
+                setSelected={setSelected}
+                handleBook={handleBook}
+              />
+            </div>
+          ))} */}
 
-      <Row xs={1} md={2} lg={3} className="g-4 mt-2">
-        {requests.map((req) => {
-          const hotel = hotelMap[req.hotelId]; // ← Correct hotel for this request
-          return (
-            <Col key={req.id}>
-              <BookingCard request={req} hotel={hotel} />
-            </Col>
-          );
-        })}
-      </Row>
-    </div>
+          {requests.map((r) => {
+            const hotel = hotels.find((h) => h.name === r.hotelName);
+
+            return (
+              <div className="col-lg-4 col-md-6 col-sm-12 user-col" key={r.id}>
+                <BookingCard request={{ ...r, img: hotel?.img }} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </>
   );
 };
 

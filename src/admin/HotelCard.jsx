@@ -76,13 +76,13 @@ const HotelCard = ({ hotel, requests = [] }) => {
         />
         <Card.Body>
           <Card.Title>
-            {hotel?.name || "Unnamed Hotel"}{" "}
+            {hotel?.name || " Hotel"}{" "}
             <Badge bg="info" className="ms-2">
               {hotel?.availablePeople ?? hotel?.totalPeople ?? 0} available
             </Badge>
           </Card.Title>
           <Card.Text>
-            {hotel?.description || "No description provided"}
+            {hotel?.city || "Bhopal"}
           </Card.Text>
 
           <div className="d-flex gap-2 mb-2">

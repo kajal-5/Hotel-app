@@ -6,7 +6,7 @@ import { DB_URL } from "../firebase";
 export const bookHotel = createAsyncThunk(
   "request/bookHotel",
   async (
-    { hotelId, hotelName, userEmail, people, date, price },
+    { hotelId, hotelName, userEmail, pincode,city,people, date, price },
     { rejectWithValue }
   ) => {
     try {
@@ -14,6 +14,8 @@ export const bookHotel = createAsyncThunk(
         hotelId,
         hotelName,
         userEmail,
+        pincode,
+        city,
         peopleBooked: Number(people),
         date,
         price: Number(price),
@@ -105,8 +107,26 @@ const requestSlice = createSlice({
         s.loading = true;
       })
       .addCase(fetchRequests.fulfilled, (s, a) => {
+        // s.loading = false;
+        // s.requests = a.payload;
         s.loading = false;
-        s.requests = a.payload;
+
+        const newData = a.payload;
+
+        // MERGE NEW OR UPDATED REQUESTS
+        newData.forEach((req) => {
+          const exist = s.requests.find((r) => r.id === req.id);
+          if (!exist) {
+            s.requests.push(req); // Add new
+          } else {
+            Object.assign(exist, req); // Update existing silently
+          }
+        });
+
+        // REMOVE DELETED REQUESTS
+        s.requests = s.requests.filter((r) =>
+          newData.some((n) => n.id === r.id)
+        );
       })
       .addCase(fetchRequests.rejected, (s, a) => {
         s.loading = false;

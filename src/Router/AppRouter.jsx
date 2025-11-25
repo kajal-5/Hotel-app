@@ -11,8 +11,13 @@ import Signup from "../login/Signup";
 import ForgotPassword from "../login/ForgotPassword";
 import AdminPage from "../admin/AdminPage";
 import UserPage from "../User/UserPage";
-import adminHome from "../admin/AdminHome";
+
+
 import Booking from "../admin/BookingReq/Booking";
+
+import UserHotelPage from "../User/Userpage/UserHotelPage";
+import CartPage from "../User/Cart/Cart";
+import BookingPage from "../User/Booking/Booking";
 
 import "./AppRouter.css";
 
@@ -106,6 +111,31 @@ const AppRouter = () => {
               user?.role === "user" ? <UserPage /> : <Navigate to="/home" />
             }
           />
+          <Route
+            path="/user/booking"
+            element={
+              user?.role === "user" ? <BookingPage /> : <Navigate to="/home" />
+            }
+          />
+          <Route
+            path="/user/test"
+            element={
+              user?.role === "user" ? <UserHotelPage /> : <Navigate to="/home" />
+            }
+          />
+          <Route
+            path="/user/cart"
+            element={
+              user?.role === "user" ? <CartPage/> : <Navigate to="/home" />
+            }
+          />
+
+          <Route
+            path="/user/booking"
+            element={
+              user?.role === "user" ? <BookingPage/> : <Navigate to="/home" />
+            }
+          />          
 
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>

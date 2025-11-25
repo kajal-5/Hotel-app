@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-import AddHotelButton from "../admin/AddHotelButton";
+import AddHotelButton from "../admin/AddHotel/AddHotelButton";
 import { logout } from "../store/authSlice";
 import UserNotification from "../User/UserNotification";
 import AdminNotification from "../admin/AdminNotification";
 import { Link } from "react-router-dom";
 
-import AdminHome from "../admin/AdminHome";
 
 import "./Nav.css";
 // import booking from "../admin/Booking";
@@ -24,14 +23,45 @@ const Navbar = ({ onLogin, onSignup }) => {
     <nav className="navbar">
       <div className="nav-left">
         <h1 className="navbar-title">🏨 Hotel App</h1>
-        <Link to="/home" className="nav-link">
+        {/* <Link to="/home" className="nav-link">
           Home
-        </Link>
+        </Link> */}
         {user && <span className="welcome">Welcome, {userName}</span>}
-        {user?.role === "admin" && (
-          <Link to="/admin/booking" className="nav-link">
-            Booking
+
+
+
+        {user?.role === "user" && (
+          <Link to="/user/test" className="nav-link">
+            test
           </Link>
+        )}
+
+
+
+
+        {user?.role === "admin" && (
+          <>
+            <Link to="/admin" className="nav-link">
+              Hotels
+            </Link>
+
+            <Link to="/admin/booking" className="nav-link">
+              Booking
+            </Link>
+          </>
+        )}
+        {user?.role === "user" && (
+          <>
+            <Link to="/user" className="nav-link">
+              Hotels
+            </Link>
+            <Link to="/user/cart" className="nav-link">
+              Cart
+            </Link>
+            <Link to="/user/booking" className="nav-link">
+              Booking
+            </Link>
+          </>
         )}
       </div>
 
@@ -54,7 +84,7 @@ const Navbar = ({ onLogin, onSignup }) => {
             {user.role === "user" && <UserNotification />}
             {user.role === "admin" && <AdminNotification />}
             {user.role === "admin" && <AddHotelButton />}
-            {user.role === "admin" && <AdminHome />}
+            {/* {user.role === "admin" && <AdminHome />} */}
             <button className="nav-btn logout" onClick={handleLogout}>
               Logout
             </button>

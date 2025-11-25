@@ -23,7 +23,7 @@
 
 
 .hotel-card .card-body {
-  padding: 5px;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
