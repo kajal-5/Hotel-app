@@ -6,7 +6,7 @@ import { DB_URL } from "../firebase";
 export const bookHotel = createAsyncThunk(
   "request/bookHotel",
   async (
-    { hotelId, hotelName, userEmail, pincode,city,people, date, price },
+    { hotelId, hotelName, userEmail, pincode,city,people, date, price,img, address },
     { rejectWithValue }
   ) => {
     try {

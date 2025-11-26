@@ -3,10 +3,8 @@ import { FaSearch } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import AddHotelButton from "../admin/AddHotel/AddHotelButton";
 import { logout } from "../store/authSlice";
-import UserNotification from "../User/UserNotification";
 import AdminNotification from "../admin/AdminNotification";
 import { Link } from "react-router-dom";
-
 
 import "./Nav.css";
 // import booking from "../admin/Booking";
@@ -23,21 +21,8 @@ const Navbar = ({ onLogin, onSignup }) => {
     <nav className="navbar">
       <div className="nav-left">
         <h1 className="navbar-title">🏨 Hotel App</h1>
-        {/* <Link to="/home" className="nav-link">
-          Home
-        </Link> */}
+
         {user && <span className="welcome">Welcome, {userName}</span>}
-
-
-
-        {user?.role === "user" && (
-          <Link to="/user/test" className="nav-link">
-            test
-          </Link>
-        )}
-
-
-
 
         {user?.role === "admin" && (
           <>
@@ -55,18 +40,14 @@ const Navbar = ({ onLogin, onSignup }) => {
             <Link to="/user" className="nav-link">
               Hotels
             </Link>
-            <Link to="/user/cart" className="nav-link">
-              Cart
-            </Link>
+            {/* <Link to="/user" className="nav-link">
+              Hotels
+            </Link> */}
             <Link to="/user/booking" className="nav-link">
               Booking
             </Link>
           </>
         )}
-      </div>
-
-      <div className="nav-center">
-        <h3>Find the Best Hotel in low price</h3>
       </div>
 
       <div className="nav-right">
@@ -81,10 +62,22 @@ const Navbar = ({ onLogin, onSignup }) => {
           </>
         ) : (
           <>
-            {user.role === "user" && <UserNotification />}
-            {user.role === "admin" && <AdminNotification />}
-            {user.role === "admin" && <AddHotelButton />}
-            {/* {user.role === "admin" && <AdminHome />} */}
+            {user.role === "user" && (
+              <>
+                <Link to="/user/cart" className="nav-link">
+                  Cart
+                </Link>
+              </>
+            )}
+            {user.role === "admin" && (
+              <>
+                <Link to="admin/cart" className="nav-link">
+                  Cart
+                </Link>
+                <AdminNotification />
+                <AddHotelButton />
+              </>
+            )}
             <button className="nav-btn logout" onClick={handleLogout}>
               Logout
             </button>

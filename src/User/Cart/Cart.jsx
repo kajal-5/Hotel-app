@@ -4,7 +4,7 @@ import { fetchRequests } from "../../store/requestSlice";
 import CartItemCard from "./CartItemList";
 import "../style/Cart.css";
 
-const CartPage = () => {
+const Cart = () => {
   const dispatch = useDispatch();
   const { requests } = useSelector((s) => s.requests);
   const user = useSelector((s) => s.auth.user);
@@ -66,4 +66,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default Cart;

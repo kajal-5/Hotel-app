@@ -10,6 +10,11 @@ const UserHotelCard = ({ hotel, onBook }) => {
         variant="top"
         src={hotel.img || "https://via.placeholder.com/400x250"}
         className="user-card-img"
+        onError={(e) => {
+            e.target.onerror = null; // ✅ prevent infinite loop
+            e.target.src = "https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.jpg?s=612x612&w=0&k=20&c=rz-WSe_6gKfkID6EL9yxCdN_UIMkXUBsr67884j-X9o=";
+          
+          }}
       />
 
       <Card.Body>

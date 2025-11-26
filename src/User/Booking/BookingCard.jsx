@@ -3,13 +3,22 @@ import { Card } from "react-bootstrap";
 import "../style/UserCard.css";
 
 const BookingCard = ({ request }) => {
+
+   const DEFAULT_IMG =
+    "https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.jpg?s=612x612&w=0&k=20&c=rz-WSe_6gKfkID6EL9yxCdN_UIMkXUBsr67884j-X9o=";
+
   return (
     <Card className="user-card h-100">
       {/* Hotel Image */}
       <Card.Img
         variant="top"
-        src={request.img || "https://via.placeholder.com/400x250"}
+        src={request.img || DEFAULT_IMG}
         className="user-card-img"
+                onError={(e) => {
+            e.target.onerror = null; // ✅ prevent infinite loop
+            e.target.src = DEFAULT_IMG;
+          
+          }}
       />
 
       <Card.Body>

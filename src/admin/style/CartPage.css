@@ -1,0 +1,17 @@
+
+.page-container {
+  width: 100% !important; 
+  min-height: 100vh;
+  padding-top: 50px !important;
+  display: flex;
+  justify-content: center;
+}
+
+
+.cart-container {
+  padding-top: 50px !important;
+  width: 100%;
+  max-width: 2000px !important;
+  justify-content: center !important;
+  padding-left: 200px !important;
+}

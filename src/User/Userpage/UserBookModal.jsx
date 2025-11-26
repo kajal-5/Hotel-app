@@ -9,6 +9,8 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
   const [end, setEnd] = useState("");
 
   const today = new Date().toISOString().split("T")[0];
+  const DEFAULT_IMG =
+    "https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.jpg?s=612x612&w=0&k=20&c=rz-WSe_6gKfkID6EL9yxCdN_UIMkXUBsr67884j-X9o=";
 
   const validateDates = (s, e) => {
     if (!s || !e) return; // No alert here during typing
@@ -45,7 +47,6 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
   /** SUBMIT **/
 
   const handleSubmit = () => {
-
     if (!start || !end) return alert("Please select dates");
 
     onSubmit({
@@ -60,25 +61,25 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
   };
 
   return (
-    <Modal show={show} onHide={onHide} centered size="md">
-      <div className="modal-content custom-modal">
+    <Modal show={show} onHide={onHide}>
+      <div className="modal-content">
         <Modal.Header closeButton>
-          <Modal.Title>Book {hotel.name}</Modal.Title>
+          <Modal.Title>{hotel.name}</Modal.Title>
         </Modal.Header>
+        <Modal.Body className="modal-body-custom">
 
-        <Modal.Body>
-          <img src={hotel.img} className="modal-img" alt={hotel.name} />
-
-          <pre>
-            <strong>City:</strong> {hotel.city} <strong>Pincode:</strong>{" "}
-            {hotel.pincode}
-          </pre>
-          <p>
-            <strong>Available:</strong> {hotel.availablePeople}
-          </p>
-
-          <Form.Group className="mt-3">
-            <Form.Label>People</Form.Label>
+          <img
+            src={hotel?.img || DEFAULT_IMG}
+            className="modal-img"
+            alt={hotel?.name || "Hotel"}
+            onError={(e) => {
+              e.target.onerror = null; // ✅ prevent infinite loop
+              e.target.src = DEFAULT_IMG;
+            }}
+          />
+          {/* PEOPLE SELECT */}
+          <div className="form-box-vertical">
+            <label>People</label>
             <Form.Select
               value={people}
               onChange={(e) => setPeople(Number(e.target.value))}
@@ -89,31 +90,31 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
                 </option>
               ))}
             </Form.Select>
-          </Form.Group>
+          </div>
 
-          <Form.Group className="mt-3">
-            <Form.Label>Start Date</Form.Label>
+          {/* START DATE */}
+          <div className="form-box-vertical">
+            <label>Check In </label>
             <Form.Control
               type="date"
               min={today}
               value={start}
-              // onChange={(e) => setStart(e.target.value)}
               onChange={handleStart}
             />
-          </Form.Group>
+          </div>
 
-          <Form.Group className="mt-3">
-            <Form.Label>End Date</Form.Label>
+          {/* END DATE */}
+          <div className="form-box-vertical">
+            <label>Check Out</label>
             <Form.Control
               type="date"
               min={start || today}
               value={end}
-              // onChange={(e) => setEnd(e.target.value)}
               onChange={handleEnd}
             />
-          </Form.Group>
+          </div>
 
-          <h5 className="mt-3 text-center">Price: ₹{hotel.price}</h5>
+          <h5 className="price-text">Price Per Night: ₹{hotel.price}</h5>
         </Modal.Body>
 
         <Modal.Footer>

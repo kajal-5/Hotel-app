@@ -52,43 +52,39 @@
 }
 
 /* CENTER SEARCH */
-.nav-center {
-  color: #ffffff;
-  font-style: Bold;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  min-width: 120px; /* makes it shrink */
-}
+
 
 
 /* RIGHT AREA */
 .nav-right {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   white-space: nowrap;
   min-width: 0;
-  margin-right: 10px;
+  margin-right: 50px;
   padding-right: 10px;
 }
 
 .nav-btn {
-  background: #ffffff;
-  color: #0078d7;
+  /* background: #ffffff; */
+  background-color: #00b4db;
+  color: #111212;
   border: none;
-  padding: 7px 14px;
-  border-radius: 20px;
-  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 10px;
+  /* font-weight: bold; */
   cursor: pointer;
   flex-shrink: 1;
+  /* opacity: 0.99; */
+  
 }
 
 .nav-btn:hover {
   background: #e4e4e4;
 }
 
-.signup {
+/* .signup {
   background: #00e6ac;
   color: black;
 }
@@ -96,7 +92,7 @@
 .logout {
   background: #ff4d4d;
   color: white;
-}
+} */
 
 /* NOTIFICATION BUTTON */
 .notification-btn {

@@ -10,14 +10,15 @@ import Login from "../login/Login";
 import Signup from "../login/Signup";
 import ForgotPassword from "../login/ForgotPassword";
 import AdminPage from "../admin/AdminPage";
-import UserPage from "../User/UserPage";
+// import UserPage from "../User/UserPage";
 
 
 import Booking from "../admin/BookingReq/Booking";
 
 import UserHotelPage from "../User/Userpage/UserHotelPage";
-import CartPage from "../User/Cart/Cart";
+import Cart from "../User/Cart/Cart";
 import BookingPage from "../User/Booking/Booking";
+import CartPage from "../admin/Cart/CartPage";
 
 import "./AppRouter.css";
 
@@ -36,23 +37,7 @@ const AppRouter = () => {
     setShowForgot(false);
   };
 
-  // Auto-login if token exists
-  // useEffect(() => {
-  //   const savedUser = JSON.parse(localStorage.getItem("user"));
-  //   if (savedUser?.token) {
-  //     dispatch(verifyToken(savedUser.token))
-  //       .unwrap()
-  //       .then(() => {
-  //         navigate(savedUser.role === "admin" ? "/admin" : "/user");
-  //       })
-  //       .catch(() => {
-  //         localStorage.removeItem("user");
-  //         navigate("/home");
-  //       });
-  //   } else {
-  //     navigate("/home");
-  //   }
-  // }, [dispatch, navigate]);
+
 
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
@@ -105,12 +90,12 @@ const AppRouter = () => {
               user?.role === "admin" ? <Booking /> : <Navigate to="/home" />
             }
           />
-          <Route
+          {/* <Route
             path="/user"
             element={
               user?.role === "user" ? <UserPage /> : <Navigate to="/home" />
             }
-          />
+          /> */}
           <Route
             path="/user/booking"
             element={
@@ -118,7 +103,7 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/user/test"
+            path="/user"
             element={
               user?.role === "user" ? <UserHotelPage /> : <Navigate to="/home" />
             }
@@ -126,7 +111,7 @@ const AppRouter = () => {
           <Route
             path="/user/cart"
             element={
-              user?.role === "user" ? <CartPage/> : <Navigate to="/home" />
+              user?.role === "user" ? <Cart/> : <Navigate to="/home" />
             }
           />
 
@@ -135,7 +120,13 @@ const AppRouter = () => {
             element={
               user?.role === "user" ? <BookingPage/> : <Navigate to="/home" />
             }
-          />          
+          />  
+          <Route
+            path="/admin/cart"
+            element={
+              user?.role === "admin" ? <CartPage/> : <Navigate to="/home" />
+            }
+          />         
 
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>

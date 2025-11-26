@@ -5,7 +5,7 @@ import { fetchRequests } from "../store/requestSlice";
 import { Spinner, Row, Col } from "react-bootstrap";
 import HotelCard from "./HotelCard";
 import "./style/HotelCard.css";
-// import AdminRequests from "../cards/adminpage.jsx";
+
 
 const AdminPage = () => {
   const dispatch = useDispatch();
@@ -39,13 +39,6 @@ const AdminPage = () => {
     );
   }
 
-  const handleApprove = (req) => {
-    console.log("Approve", req);
-  };
-
-  const handleReject = (req) => {
-    console.log("Reject", req);
-  };
 
   return (
     <div className="container-fluid mt-4 px-4 admin-card">
@@ -60,24 +53,6 @@ const AdminPage = () => {
         ))}
       </Row>
 
-      {/* <h2 className="mt-4">All Booking Requests----------------------new</h2>
-
-      <Row xs={1} md={2} lg={3} className="g-4 mt-2">
-        {requests.map((req) => {
-          const hotel = hotels.find((h) => h.id === req.hotelId);
-
-          return (
-            <Col key={req.id}>
-              <AdminRequests
-                request={req}
-                hotel={hotel}
-                onConfirm={handleApprove}
-                onCancel={handleReject}
-              />
-            </Col>
-          );
-        })}
-      </Row> */}
     </div>
   );
 };

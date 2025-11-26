@@ -10,6 +10,8 @@
   height: 480px !important;
   display: flex;
   flex-direction: column;
+  padding-bottom: 10px;
+  overflow: hidden;
 }
 
 /* Admin card image */
@@ -26,5 +28,23 @@
   padding: 25px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+}
+
+
+
+.request-scroll-container {
+  max-height: 180px;     /* control visible height */
+  overflow-y: auto;     /* enable vertical scroll */
+  padding-right: 5px;
+}
+
+/* Optional: hide ugly scrollbar */
+.request-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.request-scroll-container::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 4px;
 }

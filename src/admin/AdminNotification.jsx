@@ -3,7 +3,7 @@ import { Modal, Button, ListGroup } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchRequests, updateRequestStatus } from "../store/requestSlice";
 import { FaBell } from "react-icons/fa";
-// import "../User/UserCard.css";
+
 
 const AdminNotification = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const AdminNotification = () => {
 
   return (
     <>
-      {/* 🔔 Bell Icon */}
+      {/*Bell Icon */}
       <div className="notification-bell" onClick={() => setShow(true)}>
         <FaBell size={24} color="white" />
 
@@ -30,7 +30,7 @@ const AdminNotification = () => {
         )}
       </div>
 
-      {/* 🪟 Modal */}
+      {/*Modal */}
       <Modal show={show} onHide={() => setShow(false)} centered scrollable>
         <Modal.Header closeButton>
           <Modal.Title>Pending Booking Requests</Modal.Title>
