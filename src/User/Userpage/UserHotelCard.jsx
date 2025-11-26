@@ -1,6 +1,5 @@
-// UserHotelCard.jsx
 import React from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button ,Badge} from "react-bootstrap";
 import "../style/UserCard.css";
 
 const UserHotelCard = ({ hotel, onBook }) => {
@@ -11,19 +10,26 @@ const UserHotelCard = ({ hotel, onBook }) => {
         src={hotel.img || "https://via.placeholder.com/400x250"}
         className="user-card-img"
         onError={(e) => {
-            e.target.onerror = null; // ✅ prevent infinite loop
+            e.target.onerror = null; // prevent infinite loop
             e.target.src = "https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.jpg?s=612x612&w=0&k=20&c=rz-WSe_6gKfkID6EL9yxCdN_UIMkXUBsr67884j-X9o=";
           
           }}
       />
 
       <Card.Body>
-        <Card.Title>{hotel.name}</Card.Title>
-        <Card.Text className="user-card-desc">{hotel.city}</Card.Text>
+        <Card.Title className="space-between">{hotel.name}
+          <Badge bg="info" className="ms-2">
+             <strong>Available: {hotel.availablePeople}</strong>
+          </Badge>
+        </Card.Title>
+        
+        <Card.Text className="user-card-desc">
+          <p>City:{hotel.city}</p>
+          <p>Pincode:{hotel.pincode}</p></Card.Text>
 
         <div className="d-flex justify-content-between">
-          <strong>₹{hotel.price}</strong>
-          <small>Available: {hotel.availablePeople}</small>
+          <strong>Price per Night :₹{hotel.price}</strong>
+
         </div>
 
         <Button

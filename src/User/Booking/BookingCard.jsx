@@ -2,6 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import "../style/UserCard.css";
 
+
 const BookingCard = ({ request }) => {
 
    const DEFAULT_IMG =
@@ -24,28 +25,26 @@ const BookingCard = ({ request }) => {
       <Card.Body>
         <Card.Title className="mb-2">{request.hotelName}</Card.Title>
 
-        {/* People Booked */}
+
         <p className="user-card-desc">
           <strong>People Booked:</strong> {request.peopleBooked}
         </p>
 
-        {/* City + Pincode */}
+    
         <p className="user-card-desc">
           <strong>City:</strong> {request.city || "—"}, 
           <strong> Pincode:</strong> {request.pincode || "—"}
         </p>
 
-        {/* Dates */}
+ 
         <p className="user-card-desc">
           <strong>Date:</strong> {request.date}
         </p>
 
-        {/* Price */}
         <p className="user-card-desc">
           <strong>Price:</strong> ₹{request.price}
         </p>
 
-        {/* Status */}
         <p className="user-card-desc">
           <strong>Status:</strong> 
           <span
@@ -58,6 +57,7 @@ const BookingCard = ({ request }) => {
                   : "red",
               fontWeight: "bold",
               marginLeft: "5px",
+              paddingBottom:"10px",
             }}
           >
             {request.status}

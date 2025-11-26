@@ -57,6 +57,7 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
       city: hotel.city,
       date: `${start} to ${end}`,
       price: hotel.price,
+      img:hotel.img,
     });
   };
 
@@ -113,6 +114,7 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
               onChange={handleEnd}
             />
           </div>
+          
 
           <h5 className="price-text">Price Per Night: ₹{hotel.price}</h5>
         </Modal.Body>

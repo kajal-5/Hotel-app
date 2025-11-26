@@ -15,11 +15,6 @@ const UserHotelPage = () => {
   const [selectedHotel, setSelectedHotel] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch(fetchHotels());
-  //   dispatch(fetchRequests());
-  // }, [dispatch]);
-
   useEffect(() => {
     dispatch(fetchHotels());
     dispatch(fetchRequests());

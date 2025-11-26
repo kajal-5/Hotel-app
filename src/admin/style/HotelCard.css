@@ -7,7 +7,7 @@
   border-radius: 16px;   
   background: #fff;
   box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-  height: 480px !important;
+  height: 500px !important;
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
@@ -25,21 +25,22 @@
 
 
 .hotel-card .card-body {
-  padding: 25px;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
 }
+.card-text{
+padding: 0%!important;
+}
 
 
-
-.request-scroll-container {
-  max-height: 180px;     /* control visible height */
-  overflow-y: auto;     /* enable vertical scroll */
+/* .request-scroll-container {
+  max-height: 180px;   
+  overflow-y: auto;  
   padding-right: 5px;
 }
 
-/* Optional: hide ugly scrollbar */
 .request-scroll-container::-webkit-scrollbar {
   width: 6px;
 }
@@ -47,4 +48,12 @@
 .request-scroll-container::-webkit-scrollbar-thumb {
   background: #bbb;
   border-radius: 4px;
+} */
+
+
+.space-between{
+  margin-top:0px ;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }

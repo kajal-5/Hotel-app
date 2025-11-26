@@ -20,14 +20,16 @@
 
 /* Body spacing + layout */
 .booking-body {
-  padding: 22px;
+  /* padding: 22px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-bottom: 20px!important;
 }
 
 /* Description styling */
 .booking-desc {
+  background-color: aqua;
   color: #6c757d;
   font-size: 0.95rem;
   margin-bottom: 12px;
@@ -38,4 +40,8 @@
 .booking-details p {
   margin: 5px 0;
   font-size: 0.95rem;
+}
+
+span{
+  padding-bottom:10px ;
 }

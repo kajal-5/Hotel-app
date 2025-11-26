@@ -36,6 +36,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "Add Hotel" }) => {
         city: trimmedCity,
         totalPeople: form.people,
         price: form.price,
+        category:"Hotels"
       })
     );
     setShow(false);

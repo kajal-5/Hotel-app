@@ -24,14 +24,14 @@ const BookingCard = ({ request }) => {
         <Card.Title className="mb-2">{request.hotelName}</Card.Title>
 
         {/* People Booked */}
-        <pre className="user-card-desc">
-          <strong>People Booked:</strong> {request.peopleBooked}                    <strong>email:</strong> {request.userEmail}
-        </pre>
+        <p className="user-card-desc">                   
+        <strong>email:</strong> {request.userEmail}
+        </p>
 
         {/* City + Pincode */}
-        <p className="user-card-desc">
-          <strong>City:</strong> {request.city || "—"}, 
-          <strong> Pincode:</strong> {request.pincode || "—"}
+        <p className="user-card-desc  space-between">
+           Pincode:{request.pincode || "—"}
+          <strong>City:{request.city || "—"}</strong>
         </p>
 
         {/* Dates */}
@@ -40,8 +40,9 @@ const BookingCard = ({ request }) => {
         </p>
 
         {/* Price */}
-        <p className="user-card-desc">
-          <strong>Price:</strong> ₹{request.price}
+        <p className="user-card-desc  space-between">
+          <strong>Price: ₹{request.price}</strong>,
+          <strong>People Booked: {request.peopleBooked} </strong>
         </p>
 
         {/* Status */}

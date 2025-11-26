@@ -20,6 +20,7 @@ const CartList = ({ item }) => {
       <div className="cart-card-left">
         <h3>{item.hotelName}</h3>
         <h5>{item.userEmail}</h5>
+        <h6>{item.category}</h6>
         <p>
           <strong>City:</strong> {item.city || "—"}
         </p>

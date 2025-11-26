@@ -6,7 +6,7 @@ import { DB_URL } from "../firebase";
 export const bookHotel = createAsyncThunk(
   "request/bookHotel",
   async (
-    { hotelId, hotelName, userEmail, pincode,city,people, date, price,img, address },
+    { hotelId, hotelName, userEmail, pincode,city,people, date, price,img },
     { rejectWithValue }
   ) => {
     try {
@@ -21,6 +21,7 @@ export const bookHotel = createAsyncThunk(
         price: Number(price),
         status: "pending",
         createdAt: Date.now(),
+        img,
       };
 
       const res = await axios.post(`${DB_URL}/requests.json`, payload);
