@@ -53,7 +53,7 @@ const Login = ({ onClose, onForgot }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className="submit-btn">
           {loading ? "Logging in..." : "Login"}
         </button>
         <br></br>

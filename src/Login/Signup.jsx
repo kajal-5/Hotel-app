@@ -84,7 +84,7 @@ const Signup = ({ onClose }) => {
           required
         />
 
-        <button type="submit" disabled={loading}>
+        <button type="submit" disabled={loading} className="submit-btn">
           {loading ? "Creating..." : "Create Account"}
         </button>
 

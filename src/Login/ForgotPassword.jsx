@@ -3,7 +3,7 @@ import { API_KEY } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ onClose }) => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
@@ -20,10 +20,12 @@ const ForgotPassword = () => {
     const data = await res.json();
     if (data.error) return alert(data.error.message);
     alert("Password reset email sent!");
+    onClose();
   };
 
   return (
     <div className="auth-container">
+      <button className="close-btn" onClick={onClose}>×</button>
       <h2>Forgot Password</h2>
       <form onSubmit={handleReset}>
         <input
@@ -33,14 +35,8 @@ const ForgotPassword = () => {
           onChange={(e) => setEmail(e.target.value.replace(/\s/g, ""))}
           required
         />
-        <button type="submit">Send Reset Link</button>
-        <button
-          type="button"
-          className="secondary-btn"
-          onClick={() => navigate("/login")}
-        >
-          Back toLogin
-        </button>
+        <button type="submit" className="submit-btn">Send Reset Link</button>
+
       </form>
     </div>
   );
