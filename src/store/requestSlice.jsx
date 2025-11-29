@@ -108,10 +108,7 @@ const requestSlice = createSlice({
         s.loading = true;
       })
       .addCase(fetchRequests.fulfilled, (s, a) => {
-        // s.loading = false;
-        // s.requests = a.payload;
         s.loading = false;
-
         const newData = a.payload;
 
         // MERGE NEW OR UPDATED REQUESTS

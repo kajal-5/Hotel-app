@@ -8,7 +8,7 @@ const UserHotelCard = ({ hotel, onBook }) => {
       <Card.Img
         variant="top"
         src={hotel.img || "https://via.placeholder.com/400x250"}
-        className="user-card-img"
+        className="user-card-img1"
         onError={(e) => {
             e.target.onerror = null; // prevent infinite loop
             e.target.src = "https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.jpg?s=612x612&w=0&k=20&c=rz-WSe_6gKfkID6EL9yxCdN_UIMkXUBsr67884j-X9o=";
@@ -25,13 +25,10 @@ const UserHotelCard = ({ hotel, onBook }) => {
         
         <Card.Text className="user-card-desc">
           <p>City:{hotel.city}</p>
-          <p>Pincode:{hotel.pincode}</p></Card.Text>
-
-        <div className="d-flex justify-content-between">
+          <p>Pincode:{hotel.pincode}</p>
           <strong>Price per Night :₹{hotel.price}</strong>
-
-        </div>
-
+          </Card.Text>
+          
         <Button
           className="mt-3 w-100"
           onClick={() => {

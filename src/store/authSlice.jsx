@@ -7,7 +7,7 @@ export const signupUser = createAsyncThunk(
   "auth/signupUser",
   async ({ email, password, role = "user" }, { rejectWithValue }) => {
     try {
-      // 1️⃣ Create user in Firebase Auth
+      //Create user in Firebase Auth
       const res = await axios.post(
         `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`,
         { email, password, returnSecureToken: true }
@@ -16,7 +16,7 @@ export const signupUser = createAsyncThunk(
       const userId = res.data.localId;
       const token = res.data.idToken;
 
-      // 2️⃣ Save user record in Realtime DB (role can be "user" or "admin")
+      // Save user record in Realtime DB (role can be "user" or "admin")
       await axios.put(`${DB_URL}/users/${userId}.json?auth=${token}`, {
         email,
         role,
@@ -37,7 +37,7 @@ export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async ({ email, password }, { rejectWithValue }) => {
     try {
-      // 1️⃣ Firebase Auth Login
+      // Firebase Auth Login
       const res = await axios.post(
         `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
         { email, password, returnSecureToken: true }
@@ -46,7 +46,7 @@ export const loginUser = createAsyncThunk(
       const userId = res.data.localId;
       const token = res.data.idToken;
 
-      // 2️⃣ Fetch user role from DB
+      // Fetch user role from DB
       const roleRes = await axios.get(`${DB_URL}/users/${userId}.json?auth=${token}`);
       const role = roleRes.data?.role || "user";
 

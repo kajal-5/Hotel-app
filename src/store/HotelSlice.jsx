@@ -45,12 +45,12 @@ export const fetchHotels = createAsyncThunk(
   }
 );
 
-export const startHotelsListener = (dispatch) => {
-  const interval = setInterval(() => {
-    dispatch(fetchHotels());
-  }, 3000);
-  return () => clearInterval(interval);
-};
+// export const startHotelsListener = (dispatch) => {
+//   const interval = setInterval(() => {
+//     dispatch(fetchHotels());
+//   }, 3000);
+//   return () => clearInterval(interval);
+// };
 
 // update hotel (admin edit)
 export const updateHotel = createAsyncThunk(
@@ -70,7 +70,7 @@ export const deleteHotel = createAsyncThunk(
   "hotel/deleteHotel",
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`${DB_URL}/hotels/${id}.json`).unwrap();
+      await axios.delete(`${DB_URL}/hotels/${id}.json`);
       return id;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);

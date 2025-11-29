@@ -40,9 +40,6 @@ const Navbar = ({ onLogin, onSignup }) => {
             <Link to="/user" className="nav-link">
               Hotels
             </Link>
-            {/* <Link to="/user" className="nav-link">
-              Hotels
-            </Link> */}
             <Link to="/user/booking" className="nav-link">
               Booking
             </Link>

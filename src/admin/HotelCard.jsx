@@ -55,17 +55,11 @@ const HotelCard = ({ hotel, requests = [] }) => {
   // ---- Edit ----
   const handleEditSubmit = async (e) => {
     e.preventDefault();
-
-    const newTotal = Number(form.people);
-    const oldAvailable = hotel.availablePeople ?? hotel.totalPeople ?? 0;
-
-    // ✅ Add new total to old available (your requested logic)
-    // const updatedAvailable = Math.max(0, oldAvailable + newTotal);
-
     const updates = {
       name: form.name,
       img: form.img,
-      description: form.description,
+      pincode:Number(form.pincode),
+      city: form.city,
       totalPeople: Number(form.people),
       availablePeople: Number(form.people),
       price: Number(form.price),
@@ -124,7 +118,6 @@ const HotelCard = ({ hotel, requests = [] }) => {
                 requests.map((r) => (
                   <div
                     key={r.id}
-                    // className="d-flex justify-content-between align-items-center border p-2 mb-2 rounded"
                     className="d-flex justify-content-between align-items-center"
                   >
                     <div>

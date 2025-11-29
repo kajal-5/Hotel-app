@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
+  width: 100%!important;
   min-height: 100vh;
   background-image: linear-gradient(#833AB4,#FD1D1D, #FCB045);
   font-family: "Poppins", sans-serif;
@@ -10,7 +10,8 @@ body {
 
 /* make sure body content is pushed below the navbar */
 body, #root {
-  padding-top: 0px !important; /* match navbar height (70) + buffer */
+  padding-top: 0px !important; 
+  width:100%!important;/* match navbar height (70) + buffer */
 }
 
 /* add border to see actual navbar bounds while debugging */

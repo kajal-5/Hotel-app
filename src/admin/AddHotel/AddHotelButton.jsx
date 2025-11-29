@@ -12,7 +12,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "Add Hotel" }) => {
     img: "",
     pincode: "",
     city: "",
-    people: 1,
+    people: 10,
     price: 500,
   });
 
@@ -36,7 +36,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "Add Hotel" }) => {
         city: trimmedCity,
         totalPeople: form.people,
         price: form.price,
-        category:"Hotels"
+     
       })
     );
     setShow(false);
@@ -45,7 +45,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "Add Hotel" }) => {
       img: "",
       pincode: "",
       city: "",
-      people: 1,
+      people: 10,
       price: 500,
     });
   };
@@ -69,7 +69,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "Add Hotel" }) => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-2">
+            <Form.Group className="form-group">
               <Form.Label>Name</Form.Label>
               <Form.Control
                 value={form.name}
@@ -78,7 +78,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "Add Hotel" }) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-2">
+            <Form.Group className="form-group">
               <Form.Label>Image URL</Form.Label>
               <Form.Control
                 value={form.img}
@@ -86,7 +86,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "Add Hotel" }) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-2">
+            <Form.Group className="form-group">
               <Form.Label>Pincode</Form.Label>
               <Form.Control
                 type="number"
@@ -95,7 +95,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "Add Hotel" }) => {
                 required
               />
             </Form.Group>
-            <Form.Group className="mb-2">
+            <Form.Group className="form-group">
               <Form.Label>City</Form.Label>
               <Form.Control
                 value={form.city}
@@ -104,7 +104,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "Add Hotel" }) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-2">
+            <Form.Group className="form-group">
               <Form.Label>Total People</Form.Label>
               <Form.Control
                 type="number"
@@ -117,7 +117,7 @@ const AddHotel = ({ buttonVariant = "primary", buttonText = "Add Hotel" }) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-2">
+            <Form.Group className="form-group">
               <Form.Label>Price</Form.Label>
               <Form.Control
                 type="number"

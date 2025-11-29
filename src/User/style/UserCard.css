@@ -2,7 +2,9 @@
   padding-top: 10px !important;
 }
 
-
+.cart-text{
+  padding: 0px;
+}
 /* ROW GAP CONTROL */
 .user-row {
   gap: 15px !important;   
@@ -25,6 +27,14 @@
 
 .user-card-img {
   height: 220px;
+  width: 100%;
+  object-fit: cover;
+  background: #eaeaea;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.user-card-img1 {
+  height: 250px;
   width: 100%;
   object-fit: cover;
   background: #eaeaea;

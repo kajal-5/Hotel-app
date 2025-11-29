@@ -9,8 +9,8 @@ const Booking = () => {
   const dispatch = useDispatch();
   const { hotels } = useSelector((s) => s.hotel);
   const { requests } = useSelector((s) => s.requests);
-  const user = useSelector((s) => s.auth.user);
-  const [selected, setSelected] = useState({});
+  // const user = useSelector((s) => s.auth.user);
+  // const [selected, setSelected] = useState({});
 
   useEffect(() => {
     dispatch(fetchHotels());

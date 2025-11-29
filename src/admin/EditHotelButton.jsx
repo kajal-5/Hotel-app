@@ -1,15 +1,16 @@
 import React from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import "./style/AddHotelButton.css";
 
 const EditHotel = ({ show, onClose, form, setForm, onSave }) => {
   return (
-    <Modal show={show} onHide={onClose} centered>
+    <Modal show={show} onHide={onClose} centered contentClassName="my-modal-content">
       <Modal.Header closeButton>
         <Modal.Title>Edit Hotel</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form onSubmit={onSave}>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 form-group">
             <Form.Label>Name</Form.Label>
             <Form.Control
               value={form.name}
@@ -18,7 +19,7 @@ const EditHotel = ({ show, onClose, form, setForm, onSave }) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 form-group">
             <Form.Label>Image URL</Form.Label>
             <Form.Control
               value={form.img}
@@ -26,7 +27,7 @@ const EditHotel = ({ show, onClose, form, setForm, onSave }) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 form-group">
             <Form.Label>Pincode</Form.Label>
             <Form.Control
               type="number"
@@ -37,7 +38,7 @@ const EditHotel = ({ show, onClose, form, setForm, onSave }) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 form-group">
             <Form.Label>City</Form.Label>
             <Form.Control
               value={form.city}
@@ -46,7 +47,7 @@ const EditHotel = ({ show, onClose, form, setForm, onSave }) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 form-group">
             <Form.Label>Total People</Form.Label>
             <Form.Control
               type="number"
@@ -59,7 +60,7 @@ const EditHotel = ({ show, onClose, form, setForm, onSave }) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 form-group">
             <Form.Label>Price</Form.Label>
             <Form.Control
               type="number"
@@ -72,7 +73,7 @@ const EditHotel = ({ show, onClose, form, setForm, onSave }) => {
           </Form.Group>
 
           <div className="text-end">
-            <Button variant="secondary" onClick={onClose} className="me-2">
+            <Button onClick={onClose} className="me-2">
               Close
             </Button>
             <Button type="submit" variant="primary">

@@ -10,13 +10,12 @@ const BookingCard = ({ request }) => {
 
   return (
     <Card className="user-card h-100">
-      {/* Hotel Image */}
       <Card.Img
         variant="top"
         src={request.img || DEFAULT_IMG}
         className="user-card-img"
                 onError={(e) => {
-            e.target.onerror = null; // ✅ prevent infinite loop
+            e.target.onerror = null; // prevent infinite loop
             e.target.src = DEFAULT_IMG;
           
           }}

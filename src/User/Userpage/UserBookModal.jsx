@@ -13,8 +13,7 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
     "https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.jpg?s=612x612&w=0&k=20&c=rz-WSe_6gKfkID6EL9yxCdN_UIMkXUBsr67884j-X9o=";
 
   const validateDates = (s, e) => {
-    if (!s || !e) return; // No alert here during typing
-
+    if (!s || !e) return;
     const startDate = new Date(s);
     const endDate = new Date(e);
     const todayDate = new Date(today);
@@ -48,7 +47,10 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
 
   const handleSubmit = () => {
     if (!start || !end) return alert("Please select dates");
-
+    const totalDays =
+      start && end
+        ? Math.ceil((new Date(end) - new Date(start)) / (1000 * 60 * 60 * 24))
+        : 0;
     onSubmit({
       hotelId: hotel.id,
       hotelName: hotel.name,
@@ -56,8 +58,8 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
       pincode: hotel.pincode,
       city: hotel.city,
       date: `${start} to ${end}`,
-      price: hotel.price,
-      img:hotel.img,
+      price: hotel.price * people *totalDays,
+      img: hotel.img,
     });
   };
 
@@ -67,21 +69,23 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
         <Modal.Header closeButton>
           <Modal.Title>{hotel.name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="modal-body-custom">
+        {/* <Modal.Body className="modal-body-custom"> */}
 
-          <img
-            src={hotel?.img || DEFAULT_IMG}
-            className="modal-img"
-            alt={hotel?.name || "Hotel"}
-            onError={(e) => {
-              e.target.onerror = null; // ✅ prevent infinite loop
-              e.target.src = DEFAULT_IMG;
-            }}
-          />
+        <img
+          src={hotel?.img || DEFAULT_IMG}
+          className="modal-img"
+          alt={hotel?.name || "Hotel"}
+          onError={(e) => {
+            e.target.onerror = null; // prevent infinite loop
+            e.target.src = DEFAULT_IMG;
+          }}
+        />
+        <Modal.Body className="modal-body-custom">
           {/* PEOPLE SELECT */}
           <div className="form-box-vertical">
-            <label>People</label>
+            <label className="my-2">People</label>
             <Form.Select
+              className="my-1 form-control"
               value={people}
               onChange={(e) => setPeople(Number(e.target.value))}
             >
@@ -93,9 +97,8 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
             </Form.Select>
           </div>
 
-          {/* START DATE */}
           <div className="form-box-vertical">
-            <label>Check In </label>
+            <label className="my-2 ">Check In </label>
             <Form.Control
               type="date"
               min={today}
@@ -104,9 +107,8 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
             />
           </div>
 
-          {/* END DATE */}
           <div className="form-box-vertical">
-            <label>Check Out</label>
+            <label className="my-2 ">Check Out</label>
             <Form.Control
               type="date"
               min={start || today}
@@ -114,7 +116,6 @@ const UserBookModal = ({ show, onHide, hotel, onSubmit }) => {
               onChange={handleEnd}
             />
           </div>
-          
 
           <h5 className="price-text">Price Per Night: ₹{hotel.price}</h5>
         </Modal.Body>

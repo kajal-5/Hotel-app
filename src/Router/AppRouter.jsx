@@ -90,12 +90,7 @@ const AppRouter = () => {
               user?.role === "admin" ? <Booking /> : <Navigate to="/home" />
             }
           />
-          {/* <Route
-            path="/user"
-            element={
-              user?.role === "user" ? <UserPage /> : <Navigate to="/home" />
-            }
-          /> */}
+
           <Route
             path="/user/booking"
             element={
